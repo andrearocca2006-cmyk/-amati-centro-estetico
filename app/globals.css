@@ -1212,7 +1212,7 @@ main:focus-visible {
 .final-cta {
   background:
     linear-gradient(90deg, rgba(82, 22, 34, 0.9), rgba(82, 22, 34, 0.58)),
-    url("/images/centro-estetico-amati-trattamento-manuale.webp") center 54% / cover no-repeat;
+    var(--final-cta-image) center 54% / cover no-repeat;
   color: var(--paper);
   padding: clamp(6rem, 12vw, 12rem) 1.25rem;
   position: relative;

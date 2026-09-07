@@ -33,6 +33,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const assetPath = (path: string) => `${basePath}${path}`;
+
 const locations = [
   {
     city: "Cagliari",
@@ -98,27 +101,27 @@ const reviews = [
 
 const gallery = [
   {
-    src: "/images/trattamento-viso.webp",
+    src: assetPath("/images/trattamento-viso.webp"),
     alt: "Trattamento viso eseguito nel centro Àmati",
     className: "gallery-tall",
   },
   {
-    src: "/images/icoone.webp",
+    src: assetPath("/images/icoone.webp"),
     alt: "Trattamento corpo con tecnologia Icoone nel centro Àmati",
     className: "gallery-wide",
   },
   {
-    src: "/images/ambiente-villacidro.webp",
+    src: assetPath("/images/ambiente-villacidro.webp"),
     alt: "Cabina trattamenti della sede Àmati di Villacidro",
     className: "gallery-standard",
   },
   {
-    src: "/images/ambiente-relax.webp",
+    src: assetPath("/images/ambiente-relax.webp"),
     alt: "Ambiente dedicato ai trattamenti e al relax",
     className: "gallery-standard",
   },
   {
-    src: "/images/beauty-manicure.webp",
+    src: assetPath("/images/beauty-manicure.webp"),
     alt: "Trattamento beauty professionale nel centro Àmati",
     className: "gallery-wide",
   },
@@ -262,7 +265,7 @@ function MobileMenu() {
           <SheetDescription>Navigazione del sito Àmati</SheetDescription>
         </SheetHeader>
         <img
-          src="/images/amati-logo.webp"
+          src={assetPath("/images/amati-logo.webp")}
           alt="Àmati Centro Estetico"
           width="832"
           height="600"
@@ -322,7 +325,7 @@ export default function Home() {
       <a className="skip-link" href="#contenuto">Vai al contenuto</a>
       <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
         <a href="#inizio" className="brand" aria-label="Àmati Centro Estetico, torna all’inizio">
-          <img src="/images/amati-logo.webp" alt="Logo Àmati Centro Estetico" width="832" height="600" />
+          <img src={assetPath("/images/amati-logo.webp")} alt="Logo Àmati Centro Estetico" width="832" height="600" />
           <span className="brand-wordmark" aria-hidden="true">
             <strong>Àmati</strong>
             <small>Centro estetico</small>
@@ -343,7 +346,7 @@ export default function Home() {
       <section className="hero" id="inizio" aria-labelledby="hero-title">
         <picture className="hero-picture">
           <img
-            src="/images/centro-estetico-amati-trattamento-manuale.webp"
+            src={assetPath("/images/centro-estetico-amati-trattamento-manuale.webp")}
             alt="Operatrice Àmati durante un trattamento corpo manuale a una cliente, davanti alla scritta Benessere"
             width="1024"
             height="683"
@@ -413,7 +416,7 @@ export default function Home() {
       <section className="feature feature-laser" id="trattamenti" aria-labelledby="laser-title">
         <div className="feature-image-wrap reveal">
           <img
-            src="/images/laser.webp"
+            src={assetPath("/images/laser.webp")}
             alt="Seduta di epilazione laser eseguita nel centro Àmati"
             width="800"
             height="533"
@@ -449,7 +452,7 @@ export default function Home() {
         </div>
         <div className="feature-image-wrap reveal">
           <img
-            src="/images/trattamento-manuale.webp"
+            src={assetPath("/images/trattamento-manuale.webp")}
             alt="Trattamento corpo manuale personalizzato nella sede Àmati di Villacidro"
             width="800"
             height="533"
@@ -516,7 +519,7 @@ export default function Home() {
       <section className="about" id="chi-siamo" aria-labelledby="about-title">
         <div className="about-image reveal">
           <img
-            src="/images/team-cagliari.webp"
+            src={assetPath("/images/team-cagliari.webp")}
             alt="Le professioniste Àmati davanti alla sede di Cagliari"
             width="1024"
             height="683"
@@ -612,7 +615,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="final-cta" aria-labelledby="cta-title">
+      <section
+        className="final-cta"
+        aria-labelledby="cta-title"
+        style={
+          {
+            "--final-cta-image": `url("${assetPath("/images/centro-estetico-amati-trattamento-manuale.webp")}")`,
+          } as React.CSSProperties
+        }
+      >
         <div className="final-cta-inner reveal">
           <p className="eyebrow light">Quando vuoi, siamo qui</p>
           <h2 id="cta-title" className="display-title">
@@ -628,7 +639,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="footer-top">
           <a href="#inizio" className="footer-brand" aria-label="Torna all’inizio">
-            <img src="/images/amati-logo.webp" alt="Àmati Centro Estetico" width="832" height="600" />
+            <img src={assetPath("/images/amati-logo.webp")} alt="Àmati Centro Estetico" width="832" height="600" />
           </a>
           <div className="footer-locations">
             {locations.map((location) => (

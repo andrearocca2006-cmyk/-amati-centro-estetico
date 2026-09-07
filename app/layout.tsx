@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const assetPath = (path: string) => `${basePath}${path}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://amati-centro-estetico.sneakers-tot.chatgpt.site"),
   title: "Centro estetico a Cagliari e Villacidro | Àmati",
@@ -15,8 +18,8 @@ export const metadata: Metadata = {
     nocache: true,
   },
   icons: {
-    icon: "/images/amati-logo.webp",
-    shortcut: "/images/amati-logo.webp",
+    icon: assetPath("/images/amati-logo.webp"),
+    shortcut: assetPath("/images/amati-logo.webp"),
   },
 };
 
@@ -31,7 +34,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/images/centro-estetico-amati-trattamento-manuale.webp"
+          href={assetPath("/images/centro-estetico-amati-trattamento-manuale.webp")}
           type="image/webp"
         />
       </head>
