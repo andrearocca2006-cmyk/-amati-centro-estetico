@@ -441,4 +441,225 @@ export default function Home() {
           <span className="feature-number">02</span>
           <h2 id="manual-title" className="display-title">Il valore<br />del tocco,<br /><em>su misura.</em></h2>
           <p>
-            Ogni trattamento corpo nasce dall’ascolto e dall’esperienza dell’operatrice. Ritmo, pressione e gesti si adattano alle tue esigenze. L’obiettivo è favorire benessere, cura e leggere
+            Ogni trattamento corpo nasce dall’ascolto e dall’esperienza dell’operatrice. Ritmo, pressione e gesti si adattano alle tue esigenze. L’obiettivo è favorire benessere, cura e leggerezza.
+          </p>
+          <BookingPanel className="button button-outline-light">
+            Richiedi una consulenza corpo <ArrowRight aria-hidden="true" />
+          </BookingPanel>
+        </div>
+        <div className="feature-image-wrap reveal">
+          <img
+            src="/images/trattamento-manuale.webp"
+            alt="Trattamento corpo manuale personalizzato nella sede Àmati di Villacidro"
+            width="800"
+            height="533"
+            loading="lazy"
+            decoding="async"
+          />
+          <span className="image-caption light">Manualità · ascolto · esperienza</span>
+        </div>
+      </section>
+
+      <section className="method section-shell" id="metodo" aria-labelledby="method-title">
+        <div className="method-lead reveal">
+          <p className="eyebrow">Il metodo Àmati</p>
+          <h2 id="method-title" className="display-title">Un percorso<br />che evolve<br /><em>con te.</em></h2>
+          <p>
+            Non una seduta standard. Condividiamo le scelte e adattiamo il percorso attraverso controlli periodici.
+          </p>
+        </div>
+        <ol className="method-steps">
+          {[
+            ["01", "Consulenza e ascolto", "Conosciamo esigenze, abitudini e obiettivi."],
+            ["02", "Percorso personalizzato", "Definiamo trattamenti e priorità con chiarezza."],
+            ["03", "Cura professionale", "Sedute in istituto e indicazioni domiciliari coerenti."],
+            ["04", "Controlli periodici", "Osserviamo il percorso e lo adattiamo nel tempo."],
+          ].map(([number, title, copy], index) => (
+            <li className="reveal" style={{ transitionDelay: `${index * 90}ms` }} key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="services section-shell" aria-labelledby="services-title">
+        <div className="services-head reveal">
+          <div>
+            <p className="eyebrow">Gli altri servizi</p>
+            <h2 id="services-title" className="display-title">La cura,<br />in ogni dettaglio.</h2>
+          </div>
+          <p>
+            Esplora le aree di trattamento. Durante la consulenza definiamo insieme la proposta più adatta.
+          </p>
+        </div>
+        <div className="service-list reveal">
+          {serviceGroups.map((service) => (
+            <Collapsible key={service.title}>
+              <CollapsibleTrigger className="service-trigger">
+                <span>{service.number}</span>
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.intro}</p>
+                </div>
+                <ChevronDown aria-hidden="true" />
+              </CollapsibleTrigger>
+              <CollapsibleContent className="service-content">
+                <p>{service.items}</p>
+              </CollapsibleContent>
+            </Collapsible>
+          ))}
+        </div>
+      </section>
+
+      <section className="about" id="chi-siamo" aria-labelledby="about-title">
+        <div className="about-image reveal">
+          <img
+            src="/images/team-cagliari.webp"
+            alt="Le professioniste Àmati davanti alla sede di Cagliari"
+            width="1024"
+            height="683"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div className="about-copy reveal">
+          <p className="eyebrow dark">Chi siamo</p>
+          <h2 id="about-title" className="display-title">Competenza<br />che sa farti<br /><em>sentire a casa.</em></h2>
+          <p>
+            Valentina e il team uniscono esperienza, formazione continua e attenzione concreta. Nei centri di Cagliari e Villacidro trovi professionalità, discrezione e un approccio personale.
+          </p>
+          <BookingPanel className="text-link dark button-reset">
+            Conosciamoci con una consulenza <ArrowRight aria-hidden="true" />
+          </BookingPanel>
+        </div>
+      </section>
+
+      <section className="reviews section-shell" aria-labelledby="reviews-title">
+        <div className="reviews-label reveal">
+          <p className="eyebrow light">Dicono di noi</p>
+          <span>Parole vere,<br />esperienze Àmati.</span>
+        </div>
+        <Carousel className="review-carousel reveal" opts={{ loop: true }} aria-label="Recensioni delle clienti Àmati">
+          <CarouselContent>
+            {reviews.map((review) => (
+              <CarouselItem key={review.name}>
+                <figure>
+                  <Sparkles aria-hidden="true" />
+                  <blockquote>“{review.quote}”</blockquote>
+                  <figcaption>{review.name}</figcaption>
+                </figure>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="carousel-controls">
+            <CarouselPrevious className="carousel-button carousel-prev" />
+            <CarouselNext className="carousel-button carousel-next" />
+          </div>
+        </Carousel>
+      </section>
+
+      <section className="gallery section-shell" aria-labelledby="gallery-title">
+        <div className="gallery-head reveal">
+          <p className="eyebrow">Dentro Àmati</p>
+          <h2 id="gallery-title" className="display-title">Spazi, gesti,<br /><em>attenzioni.</em></h2>
+          <p className="gallery-hint">Scorri per vedere la galleria <span aria-hidden="true">→</span></p>
+        </div>
+        <div className="gallery-grid" aria-label="Galleria fotografica Àmati">
+          {gallery.map((image, index) => (
+            <figure
+              className={`${image.className} reveal`}
+              style={{ transitionDelay: `${(index % 3) * 80}ms` }}
+              key={image.src}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                width="1024"
+                height="683"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="locations section-shell" id="sedi" aria-labelledby="locations-title">
+        <div className="locations-head reveal">
+          <p className="eyebrow light">Le due sedi</p>
+          <h2 id="locations-title" className="display-title">Il tuo centro<br />più vicino.</h2>
+          <p>Contatta direttamente la sede per disponibilità e appuntamenti.</p>
+        </div>
+        <div className="location-grid">
+          {locations.map((location, index) => (
+            <article className="location-card reveal" style={{ transitionDelay: `${index * 100}ms` }} key={location.city}>
+              <span className="location-number">0{index + 1}</span>
+              <p>Àmati</p>
+              <h3>{location.city}</h3>
+              <address>{location.address}</address>
+              <a href={`tel:${location.tel}`} className="location-phone">{location.phone}</a>
+              <div className="location-actions">
+                <a href={`tel:${location.tel}`} aria-label={`Chiama la sede Àmati di ${location.city}`}><Phone aria-hidden="true" /> Chiama</a>
+                <a href={location.map} target="_blank" rel="noreferrer" aria-label={`Apri le indicazioni per la sede Àmati di ${location.city}`}><MapPin aria-hidden="true" /> Indicazioni</a>
+                <a href={`mailto:amati.valecentroestetico@gmail.com?subject=Richiesta%20appuntamento%20Àmati%20${location.city}`} aria-label={`Richiedi un appuntamento nella sede Àmati di ${location.city}`}>
+                  <Mail aria-hidden="true" /> Richiedi appuntamento
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="final-cta" aria-labelledby="cta-title">
+        <div className="final-cta-inner reveal">
+          <p className="eyebrow light">Quando vuoi, siamo qui</p>
+          <h2 id="cta-title" className="display-title">
+            Il tuo percorso può iniziare<br />da una semplice <em>consulenza.</em>
+          </h2>
+          <BookingPanel className="button button-light">
+            Scegli la sede <ArrowRight aria-hidden="true" />
+          </BookingPanel>
+        </div>
+      </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="footer-top">
+          <a href="#inizio" className="footer-brand" aria-label="Torna all’inizio">
+            <img src="/images/amati-logo.webp" alt="Àmati Centro Estetico" width="832" height="600" />
+          </a>
+          <div className="footer-locations">
+            {locations.map((location) => (
+              <div key={location.city}>
+                <strong>{location.city}</strong>
+                <span>{location.address}</span>
+                <a href={`tel:${location.tel}`}>{location.phone}</a>
+              </div>
+            ))}
+          </div>
+          <div className="footer-contact">
+            <nav className="footer-nav" aria-label="Navigazione nel piè di pagina">
+              <a href="#trattamenti">Trattamenti</a>
+              <a href="#metodo">Il metodo</a>
+              <a href="#chi-siamo">Chi siamo</a>
+              <a href="#sedi">Le sedi</a>
+            </nav>
+            <a href="mailto:amati.valecentroestetico@gmail.com">amati.valecentroestetico@gmail.com</a>
+            <a href="https://www.instagram.com/amaticentroestetico._/" target="_blank" rel="noreferrer">
+              <Camera aria-hidden="true" /> Instagram
+            </a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Àmati Centro Estetico</span>
+          <span>P. IVA 03779470925</span>
+          <PolicyPanel type="privacy" />
+          <PolicyPanel type="cookie" />
+          <span className="draft-badge">Anteprima privata</span>
+        </div>
+      </footer>
+    </>
+  );
+}
